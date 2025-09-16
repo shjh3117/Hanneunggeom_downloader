@@ -35,9 +35,9 @@ python downloader.py --dest downloads --max-pages 2 --levels advanced --delay 1.
 | `--max-pages` | 자료실 목록을 몇 페이지까지 탐색할지 지정합니다. 미지정 시 가능한 모든 페이지를 순회합니다. |
 | `--delay` | 요청 사이에 둘 지연 시간(초). 기본값은 1초입니다. |
 | `--levels` | `basic`, `advanced` 중 원하는 난이도를 공백으로 구분해 지정합니다. 생략하면 두 난이도 모두 내려받습니다. |
-| `--download-existing` | 기존 파일이 있어도 다시 다운로드합니다. 기본값은 건너뛰기입니다. |
+| `--download-existing` | 기존 파일이 있어도 다시 다운로드합니다. 기본값은 건너뛰기(`False`). |
 
-기본적으로 기존 파일이 있으면 건너뛰며, `--download-existing` 옵션을 사용하면 다시 받을 수 있습니다.
+기본값은 기존 파일을 건너뛰고, `--download-existing` 옵션을 사용하면 다시 내려받습니다.
 
 ## Python API
 
@@ -49,7 +49,7 @@ from khpt_downloader import download_past_exams, build_parser
 count = download_past_exams(
     dest=Path("downloads"),
     max_pages=2,
-    skip_existing=True,
+    download_existing=False,
     delay=1.0,
     levels={"basic", "advanced"},
 )
@@ -64,7 +64,7 @@ args = parser.parse_args()
 
 - `dest (Path)` : 결과 파일을 저장할 경로.
 - `max_pages (Optional[int])` : 목록 페이지 제한. `None`이면 가능한 모든 페이지를 탐색합니다.
-- `skip_existing (bool)` : 기존 파일이 있을 때 건너뛸지 여부. CLI 기본값은 `True`이며 `--download-existing` 옵션으로 끌 수 있습니다.
+- `download_existing (bool)` : 기존 파일이 있어도 다시 받을지 여부. 기본값은 `False`이며 `--download-existing` 옵션을 사용하면 다시 내려받습니다.
 - `delay (float)` : 각 요청 사이의 지연(초). 서버 부하나 차단을 완화하려면 0 이상 값을 사용하세요.
 - `levels (Optional[Set[str]])` : `{"basic", "advanced"}` 중 일부 또는 전체. `None`이면 두 난이도를 모두 내려받습니다.
 

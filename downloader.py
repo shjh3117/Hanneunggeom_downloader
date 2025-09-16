@@ -215,7 +215,7 @@ def format_entry(entry: dict) -> str:
 def download_past_exams(
     dest: Path,
     max_pages: Optional[int],
-    skip_existing: bool,
+    download_existing: bool,
     delay: float,
     levels: Optional[Set[str]],
 ) -> int:
@@ -250,7 +250,7 @@ def download_past_exams(
             for attachment in attachments:
                 target_name = build_target_filename(entry, attachment)
                 destination = dest / target_name
-                if destination.exists() and skip_existing:
+                if destination.exists() and not download_existing:
                     print(f"    Skipping existing file: {destination.name}")
                     continue
                 print(f"    Downloading {destination.name}...")
@@ -304,10 +304,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--download-existing",
-        dest="skip_existing",
-        action="store_false",
+        action="store_true",
         help="Download files again even if they already exist (default skips).",
-        default=True,
+        default=False,
     )
     return parser
 
@@ -318,8 +317,8 @@ def main(argv: Optional[Iterable[str]] = None) -> None:
     dest: Path = args.dest.expanduser().resolve()
     delay: float = max(args.delay, 0.0) if args.delay is not None else DEFAULT_DELAY
     selected_levels: Optional[Set[str]] = set(args.levels) if args.levels else None
-    skip_existing: bool = args.skip_existing
-    downloaded = download_past_exams(dest, args.max_pages, skip_existing, delay, selected_levels)
+    download_existing: bool = args.download_existing
+    downloaded = download_past_exams(dest, args.max_pages, download_existing, delay, selected_levels)
     print(f"Finished. Downloaded {downloaded} new file(s) to {dest}.")
 
 
