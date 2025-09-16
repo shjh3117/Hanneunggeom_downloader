@@ -59,7 +59,7 @@ def create_session() -> requests.Session:
     session.mount("http://", adapter)
     session.headers.setdefault(
         "User-Agent",
-        "Mozilla/5.0 (compatible; KHPTDownloader/1.0)",
+        "Mozilla/5.0 (compatible; HanneunggeomDownloader/1.0)",
     )
     return session
 

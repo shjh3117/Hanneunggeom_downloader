@@ -1,4 +1,4 @@
-# KHPT Downloader
+# Hanneunggeom Downloader
 
 한국사능력검정시험(KHPT) 기출 문제지와 정답표를 자동으로 내려받는 파이썬 모듈입니다. 모바일 공식 사이트(m.historyexam.go.kr)의 공개 자료만을 대상으로 하며, 회차·난이도·문서 유형을 판별해 규칙적인 파일명으로 저장합니다.
 
@@ -21,7 +21,7 @@ pip install requests beautifulsoup4
 
 ## CLI 사용
 
-모듈 디렉터리(`khpt_downloader/`)에서 다음과 같이 실행합니다.
+모듈 디렉터리(`Hanneunggeom_downloader/`)에서 다음과 같이 실행합니다.
 
 ```bash
 python downloader.py --dest downloads --max-pages 2 --levels advanced --delay 1.5
@@ -43,7 +43,7 @@ python downloader.py --dest downloads --max-pages 2 --levels advanced --delay 1.
 
 ```python
 from pathlib import Path
-from khpt_downloader import download_past_exams, build_parser
+from Hanneunggeom_downloader import download_past_exams, build_parser
 
 # 함수 직접 호출
 count = download_past_exams(

@@ -1,4 +1,4 @@
-"""KHPT Downloader module."""
+"""Hanneunggeom Downloader module."""
 
 from .downloader import download_past_exams, build_parser
 
