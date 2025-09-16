@@ -290,11 +290,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="Limit the number of list pages to crawl (default: all pages)",
     )
     parser.add_argument(
-        "--overwrite",
-        action="store_true",
-        help="Redownload files even if they already exist.",
-    )
-    parser.add_argument(
         "--delay",
         type=float,
         default=DEFAULT_DELAY,
@@ -316,7 +311,7 @@ def main(argv: Optional[Iterable[str]] = None) -> None:
     dest: Path = args.dest.expanduser().resolve()
     delay: float = max(args.delay, 0.0) if args.delay is not None else DEFAULT_DELAY
     selected_levels: Optional[Set[str]] = set(args.levels) if args.levels else None
-    downloaded = download_past_exams(dest, args.max_pages, args.overwrite, delay, selected_levels)
+    downloaded = download_past_exams(dest, args.max_pages, True, delay, selected_levels)
     print(f"Finished. Downloaded {downloaded} new file(s) to {dest}.")
 
 
