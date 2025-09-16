@@ -35,8 +35,7 @@ python downloader.py --dest downloads --max-pages 2 --levels advanced --delay 1.
 | `--max-pages` | 자료실 목록을 몇 페이지까지 탐색할지 지정합니다. 미지정 시 가능한 모든 페이지를 순회합니다. |
 | `--delay` | 요청 사이에 둘 지연 시간(초). 기본값은 1초입니다. |
 | `--levels` | `basic`, `advanced` 중 원하는 난이도를 공백으로 구분해 지정합니다. 생략하면 두 난이도 모두 내려받습니다. |
-| `--skip-existing` | 이미 존재하는 파일을 건너뜁니다(기본값). 명시하지 않아도 적용됩니다. |
-| `--download-existing` | 기존 파일이 있어도 다시 다운로드합니다. |
+| `--download-existing` | 기존 파일이 있어도 다시 다운로드합니다. 기본값은 건너뛰기입니다. |
 
 기본적으로 기존 파일이 있으면 건너뛰며, `--download-existing` 옵션을 사용하면 다시 받을 수 있습니다.
 

@@ -303,17 +303,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Filter by level (basic and/or advanced). Default: both.",
     )
     parser.add_argument(
-        "--skip-existing",
-        dest="skip_existing",
-        action="store_true",
-        help="Skip files that already exist (default).",
-        default=True,
-    )
-    parser.add_argument(
         "--download-existing",
         dest="skip_existing",
         action="store_false",
-        help="Download files again even if they already exist.",
+        help="Download files again even if they already exist (default skips).",
+        default=True,
     )
     return parser
 
