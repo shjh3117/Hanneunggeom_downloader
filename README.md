@@ -25,7 +25,7 @@ pip install requests beautifulsoup4
 모듈에는 CLI 파서를 노출하는 함수가 포함되어 있어 별도의 엔트리 포인트에서 활용할 수 있습니다. 예를 들어 루트 스크립트 없이 모듈만 있을 경우 다음과 같이 실행할 수 있습니다.
 
 ```bash
-python -m khpt_downloader.downloader --dest downloads --max-pages 2 --levels advanced --delay 1.5
+python downloader.py --dest downloads --max-pages 2 --levels advanced --delay 1.5
 ```
 
 ### CLI 옵션
